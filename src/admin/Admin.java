@@ -1,32 +1,36 @@
+package admin;
 import java.util.Scanner;
-import admin.Admin;
 
-public class Main {
+import lib.Utils;
+//import admin.Food;
+
+
+public class Admin {
+
 	public static void main(String[] args) {
+		Utils.clearScreen();
 		Scanner scanner = new Scanner(System.in);
 		int option;
-		System.out.println("Hello, welcome to cafeteria\n");
+		System.out.println("Admin dashboard\n");
 		
 		System.out.println("Select one of the options:");
-		System.out.println("[1] - Menu");
-		System.out.println("[2] - Admin");
+		System.out.println("[1] - See all foods");
+		System.out.println("[2] - Analytics");
 		System.out.println("[3] - Exit");
 		
 		System.out.print("Choose: ");
 		option =  scanner.nextInt();
 		
-		// enter password first to enter admin.
-		
 		switch (option) {
 		case 1: 
-			Food food = new Food();
-			food.main(args);
+			Foods.main(args);
 			break;
 		case 2: 
-			Admin.main(args);
+			Analytics.main(args);
 			break;
 		default: break;
 		}
-		
+
 	}
+
 }

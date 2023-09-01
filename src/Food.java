@@ -36,7 +36,7 @@ public class Food {
 		hasMore = scanner.next().equalsIgnoreCase("y");
 		
 		// save to variable
-		Menu foundFood = findFoodById(foodOption);
+		Menu foundFood = Utils.findFoodById(foodOption, foods);
 		Order.addFood(foundFood.id, foundFood.name, quantity, foundFood.price);
 //		System.out.println(foundFood.name);
 		if (hasMore) {
@@ -47,20 +47,8 @@ public class Food {
 		
 		
 	}
-
 	
-	static Menu findFoodById(int foodId) {
-		Menu foundFood = null;
-		
-		for (Menu food : foods) {
-			if (food.id == foodId) {
-				foundFood = food;
-				break;
-			}
-		}
-		
-		return foundFood;
-	}
+
 	
 
 }
