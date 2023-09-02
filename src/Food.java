@@ -19,12 +19,14 @@ public class Food {
 		boolean hasMore;
 		
 		System.out.println("Food Menu\n");
-		System.out.printf("%-3s %-15s %s%n", "ID", "Name", "Price");
+//		System.out.printf("%-3s %-15s %s%n", "ID", "Name", "Price");
 		
-		for (Menu food : foods) {
-			// ERROR: The field Menu.Food.id is not visible
-			System.out.printf(Utils.FORMAT, food.id, food.name, food.price);
-		}
+//		for (Menu food : foods) {
+//			// ERROR: The field Menu.Food.id is not visible
+//			System.out.printf(Utils.FORMAT, food.id, food.name, food.price);
+//		}
+//		
+		Utils.foodTable(foods);
 		
 		System.out.print("\nChoose your food (Id): ");
 		foodOption =  scanner.nextInt();

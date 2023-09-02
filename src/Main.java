@@ -15,6 +15,7 @@ public class Main {
 		System.out.println("[2] - Admin");
 		System.out.println("[3] - Exit");
 		
+		
 		System.out.print("Choose: ");
 		option =  scanner.nextInt();
 		

@@ -13,21 +13,16 @@ public class Foods {
 		Utils.clearScreen();
 		Scanner scanner = new Scanner(System.in);
 		int option;
-		System.out.println("All foods\n");
 		
-		System.out.printf("%-3s %-15s %s%n", "ID", "Name", "Price");
-		
-		for (Menu food : foods) {
-		
-			System.out.printf(Utils.FORMAT, food.id, food.name, food.price);
-		}
+		System.out.println("\nALL FOODS");
+		Utils.foodTable(foods);
 		
 		System.out.println("\nOptions:");
 		System.out.println("[1] - Add new");
 		System.out.println("[2] - Edit food");
 		System.out.println("[3] - Delete food");
 		System.out.println("[4] - Back");
-		System.out.print("Choose:");
+		System.out.print("Choose: ");
 		option =  scanner.nextInt();
 		
 		switch (option) {

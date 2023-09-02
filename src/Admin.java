@@ -7,9 +7,9 @@ public class Admin {
 		Utils.clearScreen();
 		Scanner scanner = new Scanner(System.in);
 		int option;
-		System.out.println("Admin dashboard\n");
 		
-		System.out.println("Select one of the options:");
+		System.out.println("\nAdmin dashboard\n");
+		System.out.println("Select one of the options below.");
 		System.out.println("[1] - See all foods");
 		System.out.println("[2] - Analytics");
 		System.out.println("[3] - Back");
@@ -29,7 +29,5 @@ public class Admin {
 			break;
 		default: break;
 		}
-
 	}
-
 }
