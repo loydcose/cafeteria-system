@@ -1,4 +1,4 @@
-package admin;
+
 
 import java.util.List;
 import java.util.Scanner;
@@ -18,7 +18,7 @@ public class Foods {
 		System.out.printf("%-3s %-15s %s%n", "ID", "Name", "Price");
 		
 		for (Menu food : foods) {
-			// ERROR: The field Menu.Food.id is not visible
+		
 			System.out.printf(Utils.FORMAT, food.id, food.name, food.price);
 		}
 		

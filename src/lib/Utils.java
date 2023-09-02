@@ -1,14 +1,12 @@
 package lib;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Utils {
+	static Scanner scanner = new Scanner(System.in);
+	
     public static final String FORMAT = "%-3d %-15s %d%n";
-    
-    public static void clearConsole() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
     
     public static void foodTable(List<Menu> foods) {
     	   System.out.println("ID\t\tName\t\tPrice");
@@ -57,11 +55,28 @@ public class Utils {
 		return foundFoods;
 	}
 	
+	public static List<Menu> toSingleItemArray(int foodId) {
+		List<Menu> foodList = Menu.foodList; 
+		List<Menu> foundFoods = new ArrayList<>();
+		Menu foundFood = Utils.findFoodById(foodId, foodList);
+		foundFoods.add(foundFood);
+		
+		return foundFoods;
+	}
+	
+	
 	public static void clearScreen() {  
 	    System.out.print("\033[H\033[2J");  
 	    System.out.flush();  
 	}  
 	
+	
+	public static void confirm(String message) {
+		System.out.printf("\n%s", message);
+		System.out.println("\nPress enter to continue...");
+		scanner.nextLine();
+//		scanner.nextLine();
+	}
 	
 	
 	

@@ -1,8 +1,11 @@
 import java.util.Scanner;
-import admin.Admin;
+
+import lib.Utils;
 
 public class Main {
+	
 	public static void main(String[] args) {
+		Utils.clearScreen();
 		Scanner scanner = new Scanner(System.in);
 		int option;
 		System.out.println("Hello, welcome to cafeteria\n");
@@ -15,18 +18,24 @@ public class Main {
 		System.out.print("Choose: ");
 		option =  scanner.nextInt();
 		
-		// enter password first to enter admin.
 		
 		switch (option) {
 		case 1: 
-			Food food = new Food();
-			food.main(args);
+			Food.main(args);
 			break;
 		case 2: 
-			Admin.main(args);
+			System.out.print("Enter password: ");
+			boolean isPasswordCorrect = scanner.next().equals("admin");
+			if (isPasswordCorrect) {
+				Admin.main(args);
+			} else {
+				System.out.println("Wrong password");
+				Main.main(args);
+			}
+			
 			break;
 		default: break;
 		}
-		
+
 	}
 }
