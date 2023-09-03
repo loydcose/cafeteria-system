@@ -1,6 +1,8 @@
 package lib;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -183,7 +185,21 @@ public class Utils {
 		return decoratedString;
 	}
 	
+	public static String toDate(Date date) {
+		 SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd");
+		 String formattedDate = dateFormatter.format(date);
+		 
+		 return formattedDate;
+	}
+	
+	public static String toTime(Date date) {
+		 SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm");
+		 String formattedTime = timeFormatter.format(date);
+		 
+		 return formattedTime;
+	}
 	
 	
 	
+
 }

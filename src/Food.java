@@ -12,7 +12,7 @@ public class Food {
 	static List<Menu> foods = Menu.foodList;
 
 	public static void main(String[] args) {
-		
+		Utils.clearScreen();
 		Scanner scanner = new Scanner(System.in);
 		int foodOption;
 		int quantity;

@@ -11,6 +11,7 @@ public class Menu {
         this.id = id;
         this.name = name;
         this.price = price;
+        // nice
     }
 
     // Declare food items directly in the Menu class
