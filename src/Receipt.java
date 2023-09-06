@@ -9,6 +9,7 @@ public class Receipt {
 	static List<Order> orders = Order.orders;
 	
 	public static void main(String[] args, int orderId) {	
+		Utils.clearScreen();
 		System.out.println("Receipt Page\n");
 		System.out.printf("%-3s %-15s %-12s %s%n", "ID", "Name", "Quantity", "Total");
 		
