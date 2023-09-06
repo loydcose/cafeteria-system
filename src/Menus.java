@@ -11,28 +11,33 @@ import java.util.List;
 public class Menus {
 	static List<Menu> foods = Menu.foodList;
 	static List<Order> orders = Order.orders;
+	static Scanner scanner = new Scanner(System.in);
 	
 	public static void main(String[] args) {
-		 int orderId = orders.size() + 1;
-		choose(args, orderId);
+		Utils.clearScreen();
+		int orderId = orders.size() + 1;
+		int option;
+		
+		System.out.println("Food Menu\n");
+		Utils.foodTable(foods);
+			
+		System.out.println("[1] - Order Food");
+		System.out.println("[2] - Back");
+		System.out.print("Choose: ");
+		option = scanner.nextInt();		
+		
+		switch(option) {
+		case 1: choose(args, orderId);
+		break;
+		default: Main.main(args);
+		}
 	}
 	
 	public static void choose(String[] args, int orderId) {
-		Utils.clearScreen();
-		Scanner scanner = new Scanner(System.in);
+		
 		int foodOption;
 		int quantity;
 		boolean hasMore;
-		
-		System.out.println("Food Menu\n");
-//		System.out.printf("%-3s %-15s %s%n", "ID", "Name", "Price");
-		
-//		for (Menu food : foods) {
-//			// ERROR: The field Menu.Food.id is not visible
-//			System.out.printf(Utils.FORMAT, food.id, food.name, food.price);
-//		}
-//		
-		Utils.foodTable(foods);
 		
 		System.out.print("\nChoose your food (Id): ");
 		foodOption =  scanner.nextInt();
