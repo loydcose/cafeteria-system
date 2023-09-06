@@ -8,10 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Food {
+public class Menus {
 	static List<Menu> foods = Menu.foodList;
-
+	static List<Order> orders = Order.orders;
+	
 	public static void main(String[] args) {
+		 int orderId = orders.size() + 1;
+		choose(args, orderId);
+	}
+	
+	public static void choose(String[] args, int orderId) {
 		Utils.clearScreen();
 		Scanner scanner = new Scanner(System.in);
 		int foodOption;
@@ -39,16 +45,18 @@ public class Food {
 		
 		// save to variable
 		Menu foundFood = Utils.findFoodById(foodOption, foods);
-		Order.addFood(foundFood.id, foundFood.name, quantity, foundFood.price);
+		
+		Order.addOrder(orderId, foundFood.id, foundFood.name, quantity, foundFood.price);
 //		System.out.println(foundFood.name);
+		
 		if (hasMore) {
-			main(args);
+			Menus.choose(args, orderId);
 		} else {
-			Receipt.main(args);
+			Receipt.main(args, orderId);
 		};
-		
-		
 	}
+	
+	
 	
 
 	

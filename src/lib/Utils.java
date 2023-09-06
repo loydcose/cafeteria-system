@@ -133,6 +133,19 @@ public class Utils {
 		return foundIndex;
 	}
 	
+	public static Order findOrderById(int orderId) {
+		List<Order> orders = Order.orders;
+		Order foundOrder = null;
+		
+		for (Order order : orders) {
+			if (order.id == orderId) {
+				foundOrder = order;
+			}
+		}
+		
+		return foundOrder;
+	}
+	
 	public static List<Menu> toSingleItemArray(int foodId, List<Menu> foodList) {
 		List<Menu> foundFoods = new ArrayList<>();
 		Menu foundFood = Utils.findFoodById(foodId, foodList);

@@ -22,7 +22,7 @@ public class Main {
 		
 		switch (option) {
 		case 1: 
-			Food.main(args);
+			Menus.main(args);
 			break;
 		case 2: 
 			System.out.print("Enter password: ");

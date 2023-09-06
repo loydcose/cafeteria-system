@@ -3,63 +3,67 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-// todo learn hasmap
 // code improvement -> chatgpt (Java Tuts)
+
 
 public class Order {
 	 public int id;
-	 public String name;
-	 public int quantity;
-	 public int total;
 	 public Date createdAt;
-	 public int price;
-
-     public Order(int id, String name, int quantity, int price) {
+	 public List<Food> foods;
+	 
+     public Order(int id) {
          this.id = id;
-         this.name = name;
-         this.quantity = quantity;
-         this.price = price;
-         this.total = price * quantity;
+         this.foods = new ArrayList<>();
          this.createdAt = new Date();
      }
 
-
-    public static List<Order> foodList = new ArrayList<>();
-    public static void addFood(int id, String name, int quantity, int price) {
-    	boolean isExist = false;
+    public static List<Order> orders = new ArrayList<>();
+    
+    public static void addOrder(int orderId, int id, String name, int quantity, int price) {
     	
-    	for (Order food : foodList) {
-    		if (food.id == id) {
-    			isExist = true;
-    			food.quantity += quantity;
-    			food.total += (food.quantity + quantity) * food.price;
-    			break;
+    	// add food if id already exists
+    	for (Order order : orders) {
+    		if (order.id == orderId) {
+    			boolean isExist = false;
+    	    	for (Food foodItem : order.foods) {
+    	    		// check if food id has already been added
+    	    		if (foodItem.id == id) {
+    	    			isExist = true;
+    	    			foodItem.quantity += quantity;
+    	    			foodItem.total += (foodItem.quantity + quantity) * foodItem.price;
+    	    			break;
+    	    		}
+    	    	}
+    	    	if (!isExist) {
+    	    		order.foods.add(new Food(id, name, quantity, price));
+    	    	}
+    	    	return;
     		}
     	}
     	
-    	if (!isExist) {
-    		foodList.add(new Order(id, name, quantity, price));
-    	}
+    	// if id isn't present to orders, add new
+    	Order newOrder = new Order(orderId);
+    	Food newFood = new Food(id, name, quantity, price);
+    	newOrder.foods.add(newFood);
+    	orders.add(newOrder);
     	
     }
     
-    public static int overallSales() {
+    
+    // calculates total sales and average sales
+    public static int[] sales() {
     	int total = 0;
+    	int items = 0;
     	
-    	for (Order food : foodList) {
-    		total += food.price;
+    	for (Order order : orders) {
+    		for (Food food : order.foods) {
+    			items += food.quantity;
+    			total += food.total;
+    		}
     	}
     	
-    	return total;
-    }
-    
-    public static int getAverageSales() {
-    	int average = 0;
+    	int[] result = {total, total > 0 ? total / items : 0};
     	
-    	int total = overallSales();	
-    	average = total / foodList.size();
-    	
-    	return average;
+    	return result;
     }
-    
 }
