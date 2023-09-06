@@ -26,14 +26,14 @@ public class Analytics {
 			System.out.println("\nAverage sales: " + averageSales);
 			System.out.println("\nSales:");
 			
-			
-			System.out.printf("%-3s %-6s %-6s %-10s %-4s %-4s %n", "ID", "Date", "Time", "Name", "Qty", "Prc");
-			
-			for (Order order : Order.orders) {
-				for (Food food : order.foods) {
-					System.out.printf("%-3d %-6s %-6s %-10s %-4d %-4d %n", food.id, Utils.toDate(order.createdAt), Utils.toTime(order.createdAt), food.name, food.quantity, food.total);
-				}
-			}
+			Utils.analyticsTable(Order.orders);
+//			System.out.printf("%-3s %-6s %-6s %-10s %-4s %-4s %n", "ID", "Date", "Time", "Name", "Qty", "Prc");
+//			
+//			for (Order order : Order.orders) {
+//				for (Food food : order.foods) {
+//					System.out.printf("%-3d %-6s %-6s %-10s %-4d %-4d %n", food.id, Utils.toDate(order.createdAt), Utils.toTime(order.createdAt), food.name, food.quantity, food.total);
+//				}
+//			}
 			
 			System.out.println("\nTotal sales: " + totalSales);
 		}

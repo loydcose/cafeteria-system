@@ -11,14 +11,10 @@ public class Receipt {
 	public static void main(String[] args, int orderId) {	
 		Utils.clearScreen();
 		System.out.println("Receipt Page\n");
-		System.out.printf("%-3s %-15s %-12s %s%n", "ID", "Name", "Quantity", "Total");
-		
 		Order foundOrder = Utils.findOrderById(orderId);
 		
 		if (foundOrder != null) {
-			for (Food food : foundOrder.foods) {
-				System.out.printf("%-3d %-15s %-12d %d%n", food.id, food.name, food.quantity, food.total);
-			}
+			Utils.receiptTable(foundOrder.foods);
 			
 			System.out.printf("\nOVERALL TOTAL: %d", countOverallTotal(foundOrder.foods));
 			System.out.printf("\nOrder at: %s %s%n", Utils.toDate(foundOrder.createdAt), Utils.toTime(foundOrder.createdAt));

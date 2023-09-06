@@ -3,103 +3,146 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+
+
 
 public class Utils {
 	static Scanner scanner = new Scanner(System.in);
 	
     public static final String FORMAT = "%-3d | %-15s | %d | %n";
     
-    public static void foodTable(List<Menu> foods) {
-    	// todo make this code short. chatgpt = 
-    	
-    	String column1 = "ID";
-    	String column2 = "Name";
-    	String column3 = "Price";
-    	
-    	
-    	int longestId = column1.length();
-    	int longestName = column2.length();
-    	int longestPrice = column3.length();
-    	
-    	for (int i = 0; i < foods.size(); i++) {
-    		int strLength = Integer.toString(foods.get(i).id).length();
-			if (strLength > longestId) {
-				longestId = strLength;
-			}
-		}
-    	
-    	for (int i = 0; i < foods.size(); i++) {
-    		int strLength = foods.get(i).name.length();
-			if (strLength > longestName) {
-				longestName = strLength;
-			}
-		}
-    	
-     	for (int i = 0; i < foods.size(); i++) {
-    		int strLength = Integer.toString(foods.get(i).price).length();
-			if (strLength > longestPrice) {
-				longestPrice = strLength;
-			}
-		}
-     	System.out.print("+");
-     	System.out.print(String.join("", Collections.nCopies(longestId + 2, "-")));
-     	System.out.print("+");
-     	System.out.print(String.join("", Collections.nCopies(longestName + 2, "-")));
-     	System.out.print("+");
-     	System.out.print(String.join("", Collections.nCopies(longestPrice + 2, "-")));
+    static void printTableLines(int[] arr) {
+    	for (int i = 0; i < arr.length; i++) {
+    		System.out.print("+");
+         	System.out.print(String.join("", Collections.nCopies(arr[i] + 2, "-")));
+    	}
      	System.out.print("+");
      	System.out.println();
-     	
-     	String columnStrFormat = "| %-" + longestId + "s | %-" + longestName + "s | %-" + longestPrice + "s |%n";
-     	System.out.printf(columnStrFormat, column1, column2, column3);
-     	
-     	System.out.print("+");
-     	System.out.print(String.join("", Collections.nCopies(longestId + 2, "-")));
-     	System.out.print("+");
-     	System.out.print(String.join("", Collections.nCopies(longestName + 2, "-")));
-     	System.out.print("+");
-     	System.out.print(String.join("", Collections.nCopies(longestPrice + 2, "-")));
-     	System.out.print("+");
-     	System.out.println();
-     	
-     	
-     	
-     	
-     	
-     	
-     	
-     	
-     	
-     	String strFormat = "| %-" + longestId + "d | %-" + longestName + "s | %-" + longestPrice + "d |%n";
-     	
-     	
-    	for (Menu food : foods) {
-    		
-			System.out.printf(strFormat, food.id, food.name, food.price);
-			System.out.print("+");
-			System.out.print(String.join("", Collections.nCopies(longestId + 2, "-")));
-	     	System.out.print("+");
-	     	System.out.print(String.join("", Collections.nCopies(longestName + 2, "-")));
-	     	System.out.print("+");
-	     	System.out.print(String.join("", Collections.nCopies(longestPrice + 2, "-")));
-	     	System.out.print("+");
-	     	
-	     	
-	     	
-	     	System.out.println();
-			
-		}
-    	
-    	
-    
-//    	   System.out.printf("%-3s %-15s %s%n", "ID", "Name", "Price");
-//    		for (Menu food : foods) {
-//    			// ERROR: The field Menu.Food.id is not visible
-//    			System.out.printf(Utils.FORMAT, food.id, food.name, food.price);
-//    		}
     }
+    
+    public static void foodTable(List<Menu> foods) {
+    	
+    	String[] columns = {"Id", "Name", "Price"};
+    	int[] columnLengths = new int[columns.length];
+    	for (int i = 0; i < columns.length; i++) {
+    		columnLengths[i] = columns[i].length();
+    	}
+    	
+    	
+    	for (int i = 0; i < foods.size(); i++) {
+    		if (columnLengths[0] < Integer.toString(foods.get(i).id).length()) {
+    			columnLengths[0] = Integer.toString(foods.get(i).id).length();
+    		}
+    		if (columnLengths[1] < foods.get(i).name.length()) {
+    			columnLengths[1] = foods.get(i).name.length();
+    		}
+    		if (columnLengths[2] < Integer.toString(foods.get(i).price).length()) {
+    			columnLengths[2] = Integer.toString(foods.get(i).price).length();
+    		}
+    	}
+    	
+    	String columnStrFormat = "| %-" + columnLengths[0] + "s | %-" + columnLengths[1] + "s | %-" + columnLengths[2] + "s |%n";
+    	String strFormat = "| %-" + columnLengths[0] + "d | %-" + columnLengths[1] + "s | %-" + columnLengths[2] + "d |%n";
+    	
+    	printTableLines(columnLengths);
+     	System.out.printf(columnStrFormat, columns[0], columns[1], columns[2]);
+     	printTableLines(columnLengths);
+    	
+    	for (Menu food : foods) {
+			System.out.printf(strFormat, food.id, food.name, food.price);
+			printTableLines(columnLengths);
+		}
+    }
+    
+    public static void receiptTable(List<Food> foods) {
+    	
+    	String[] columns = {"Id", "Name", "Quantity", "Total"};
+    	int[] columnLengths = new int[columns.length];
+    	for (int i = 0; i < columns.length; i++) {
+    		columnLengths[i] = columns[i].length();
+    	}
+    	
+    	
+    	for (int i = 0; i < foods.size(); i++) {
+    		if (columnLengths[0] < Integer.toString(foods.get(i).id).length()) {
+    			columnLengths[0] = Integer.toString(foods.get(i).id).length();
+    		}
+    		if (columnLengths[1] < foods.get(i).name.length()) {
+    			columnLengths[1] = foods.get(i).name.length();
+    		}
+    		if (columnLengths[2] < Integer.toString(foods.get(i).quantity).length()) {
+    			columnLengths[2] = Integer.toString(foods.get(i).quantity).length();
+    		}
+    		if (columnLengths[3] < Integer.toString(foods.get(i).total).length()) {
+    			columnLengths[3] = Integer.toString(foods.get(i).total).length();
+    		}
+    	}
+    	
+    	String columnStrFormat = "| %-" + columnLengths[0] + "s | %-" + columnLengths[1] + "s | %-" + columnLengths[2] + "s | %-" + columnLengths[3] + "s |%n";
+    	String strFormat = "| %-" + columnLengths[0] + "d | %-" + columnLengths[1] + "s | %-" + columnLengths[2] + "d | %-" + columnLengths[3] + "d |%n";
+    	
+    	printTableLines(columnLengths);
+     	System.out.printf(columnStrFormat, columns[0], columns[1], columns[2], columns[3]);
+     	printTableLines(columnLengths);
+    	
+    	for (Food food : foods) {
+			System.out.printf(strFormat, food.id, food.name, food.quantity, food.total);
+			printTableLines(columnLengths);
+		}
+    }
+    
+    public static void analyticsTable(List<Order> orders) {
+    	
+    	String[] columns = {"Id", "Date", "Time", "Name", "Qty", "Prc"};
+    	int[] columnLengths = new int[columns.length];
+    	for (int i = 0; i < columns.length; i++) {
+    		columnLengths[i] = columns[i].length();
+    	}
+    	
+    	for (Order order : orders) {
+    		for (int i = 0; i < order.foods.size(); i++) {
+        		if (columnLengths[0] < Integer.toString(order.foods.get(i).id).length()) {
+        			columnLengths[0] = Integer.toString(order.foods.get(i).id).length();
+        		}
+        		if (columnLengths[1] < toDate(order.createdAt).length()) {
+        			columnLengths[1] = toDate(order.createdAt).length();
+        		}
+        		if (columnLengths[2] < toTime(order.createdAt).length()) {
+        			columnLengths[2] = toTime(order.createdAt).length();
+        		}
+        		if (columnLengths[3] < order.foods.get(i).name.length()) {
+        			columnLengths[3] = order.foods.get(i).name.length();
+        		}
+        		if (columnLengths[4] < Integer.toString(order.foods.get(i).quantity).length()) {
+        			columnLengths[5] = Integer.toString(order.foods.get(i).quantity).length();
+        		}
+        		if (columnLengths[5] < Integer.toString(order.foods.get(i).price).length()) {
+        			columnLengths[5] = Integer.toString(order.foods.get(i).price).length();
+        		}
+        	}
+    	}
+    	
+    	
+    	String columnStrFormat = "| %-" + columnLengths[0] + "s | %-" + columnLengths[1] + "s | %-" +columnLengths[2]+ "s | %-" + columnLengths[3] + "s | %-" + columnLengths[4] + "s | %-" + columnLengths[5] + "s |%n";
+    	String strFormat = "| %-" + columnLengths[0] + "d | %-" + columnLengths[1] + "s | %-" + columnLengths[2] + "s | %-" + columnLengths[3] + "s | %-" + columnLengths[4] + "d | %-" + columnLengths[5] + "d |%n";
+    	
+    	printTableLines(columnLengths);
+     	System.out.printf(columnStrFormat, columns[0], columns[1], columns[2], columns[3], columns[4], columns[5]);
+     	printTableLines(columnLengths);
+    	
+     	for (Order order : orders) {
+     		for (Food food : order.foods) {
+     			System.out.printf(strFormat, food.id, toDate(order.createdAt), toTime(order.createdAt), food.name, food.quantity, food.price);
+     			printTableLines(columnLengths);
+     		}
+     	}
+    }
+    
+    
     
     
     // since methods in java can't have default values.

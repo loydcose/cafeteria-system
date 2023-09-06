@@ -20,6 +20,7 @@ public class Menus {
 		
 		System.out.println("Food Menu\n");
 		Utils.foodTable(foods);
+//		Utils.niceTable("something", foods);
 			
 		System.out.println("[1] - Order Food");
 		System.out.println("[2] - Back");
