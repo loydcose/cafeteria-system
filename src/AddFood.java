@@ -12,7 +12,6 @@ public class AddFood {
 		Utils.clearScreen();
 		List<Menu> foodList = Menu.foodList;
 		Scanner scanner = new Scanner(System.in);
-		boolean isGood;
 		String foodName;
 		int price;
 		
@@ -23,34 +22,27 @@ public class AddFood {
 		
 		System.out.print("Price: ");
 		price = scanner.nextInt();
+		scanner.nextLine();
 		
 		// save
 		foodList.add(new Menu(foodList.size() + 1, foodName, price));
 		
 		List<Menu> foundFoods = Utils.toSingleItemArray(foodList.size(), foodList);
-
 		
 		// display with utils
 		Utils.foodTable(foundFoods);
 		
-
-		System.out.print("Are this good ok? (y/n): ");
-		isGood =  scanner.next().equalsIgnoreCase("y");
+		System.out.print("Are this good ok? (Y/n): ");
+		String input = scanner.nextLine().trim();
 		
-		if (isGood) {
+		if (input.isEmpty() || !input.equalsIgnoreCase("n")) {
+			Utils.confirm("Food Added!");
 			Foods.main(args);
 		} else {
 			EditFood.main2(foodList.size());
-			System.out.println("\nFood Added!");
-			System.out.println("Press enter to continue...");
-			scanner.nextLine();
-			scanner.nextLine();
+			Utils.confirm("Food Added!");
 			Foods.main(args);
 		}
-		
-		
-		// n - go to edit page
-		// y - go back
 		
 	}
 

@@ -13,32 +13,24 @@ public class DeleteFood {
 		List<Menu> foodList = Menu.foodList;
 		Scanner scanner = new Scanner(System.in);
 		int foodId;
-		String foodName;
-		int price;
-		boolean isGood;
 		
 		System.out.print("Choose food id to delete: ");
 		foodId = scanner.nextInt();
+		scanner.nextLine();
 		
 		Utils.foodTable(Utils.toSingleItemArray(foodId, foodList));
 		
-		// display table
+		System.out.print("You sure you want to remove this? (y/N): ");
+		String input = scanner.nextLine().trim();
 		
-		// about to delete, then table
-		System.out.print("Are you sure you want to remove this? (y/n): ");
-		isGood =  scanner.next().equalsIgnoreCase("y");
-		
-		if (isGood) {
-			// remove the food
+		if (input.isEmpty() || !input.equalsIgnoreCase("y")) {
+			Foods.main(args);
+		} else {
 			int foodIndex = Utils.findIndexById(foodId, foodList);
 			foodList.remove(foodIndex);
 			
 			Utils.confirm("Food Deleted!");
 			Foods.main(args);
-		} else {
-			// dont remove 
-			Foods.main(args);
 		}
 	}
-
 }

@@ -18,7 +18,7 @@ public class Menu {
     public static List<Menu> foodList = new ArrayList<>();
     static {
     	
-        foodList.add(new Menu(foodList.size() + 1, "Sinigang sa miso", 60));
+        foodList.add(new Menu(foodList.size() + 1, "Adobo", 60));
         foodList.add(new Menu(foodList.size() + 1, "Sinigang", 60));
         foodList.add(new Menu(foodList.size() + 1, "Longsilog", 45));
         foodList.add(new Menu(foodList.size() + 1, "Tosilog", 40));

@@ -37,33 +37,25 @@ public class Menus {
 		
 		int foodOption;
 		int quantity;
-		boolean hasMore;
 		
 		System.out.print("\nChoose your food (Id): ");
 		foodOption =  scanner.nextInt();
 		
 		System.out.print("Quantity: ");
 		quantity =  scanner.nextInt();
+		scanner.nextLine();
 		
-		System.out.print("Choose more? (y/n): ");
-		hasMore = scanner.next().equalsIgnoreCase("y");
+		System.out.print("Choose more? (y/N): ");
+		String input = scanner.nextLine().trim();
 		
-		// save to variable
 		Menu foundFood = Utils.findFoodById(foodOption, foods);
-		
 		Order.addOrder(orderId, foundFood.id, foundFood.name, quantity, foundFood.price);
-//		System.out.println(foundFood.name);
 		
-		if (hasMore) {
-			Menus.choose(args, orderId);
-		} else {
+		if (input.isEmpty() || !input.equalsIgnoreCase("y")) {
 			Receipt.main(args, orderId);
-		};
+		} else {
+			Menus.choose(args, orderId);
+		}
 	}
-	
-	
-	
-
-	
 
 }

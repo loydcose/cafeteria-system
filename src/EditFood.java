@@ -17,44 +17,43 @@ public class EditFood {
 		
 		System.out.print("Choose food id to edit: ");
 		foodId = scanner.nextInt();
-		
+		scanner.nextLine();
 		
 		main2(foodId);
-		System.out.println("\nFood Updated!");
-		System.out.println("Press enter to continue...");
-		scanner.nextLine();
-		scanner.nextLine();
+		Utils.confirm("Food Updated!");
 		Foods.main(args);
 	}
 	
 	
 	public static void main2(int foodId) {
 		// find food by id
-					Menu foundFood = Utils.findFoodById(foodId);
+		Menu foundFood = Utils.findFoodById(foodId);
 					
-					System.out.printf("Change name (%s): ", foundFood.name);
-					foodName = scanner.next();
+		System.out.printf("Change name (%s): ", foundFood.name);
+		String foodNameInput = scanner.nextLine().trim();
+		foodName = foodNameInput.isEmpty() ? foundFood.name : foodNameInput;
 					
-					System.out.printf("Change price (%d): ", foundFood.price);
-					price = scanner.nextInt();
+		System.out.printf("Change price (%d): ", foundFood.price);
+		String foodPriceInput = scanner.nextLine().trim();
+		price = foodPriceInput.isEmpty() ? foundFood.price : Integer.parseInt(foodPriceInput);
 					
-					// find indexById
-					int foodIndex = Utils.findIndexById(foodId, foodList);
+		// find indexById
+		int foodIndex = Utils.findIndexById(foodId, foodList);
 					
-					// update with array list set
-					foodList.set(foodIndex, new Menu(foodId, foodName, price));
-					List<Menu> foundFoods = Utils.toSingleItemArray(foodId, foodList);
-
+		// update with array list set
+		foodList.set(foodIndex, new Menu(foodId, foodName, price));
+		List<Menu> foundFoods = Utils.toSingleItemArray(foodId, foodList);
 							
-					// display with utils
-					Utils.foodTable(foundFoods);
+		// display with utils
+		Utils.foodTable(foundFoods);
 					
-					
-					// save 
-					// print the result
-					// then ask this
-					System.out.print("\nAre this good ok? (y/n): ");
-					isGood =  scanner.next().equalsIgnoreCase("y");
-					if (!isGood) main2(foodId);
+		// save 
+		// print the result
+		System.out.print("\nAre this good ok? (Y/n): ");
+		String input = scanner.nextLine().trim();
+		
+		if (!input.isEmpty() && input.equalsIgnoreCase("n")) {
+			main2(foodId);
+		}
 	}
 }
