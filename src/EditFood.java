@@ -14,9 +14,8 @@ public class EditFood {
 	static boolean isGood = false;
 
 	public static void main(String[] args) {
-		Utils.clearScreen();
-		System.out.println("Edit food\n");
-		System.out.print("Choose food id: ");
+		
+		System.out.print("Choose food id to edit: ");
 		foodId = scanner.nextInt();
 		
 		
@@ -54,7 +53,7 @@ public class EditFood {
 					// save 
 					// print the result
 					// then ask this
-					System.out.print("\nAre this good ok? (y/n)");
+					System.out.print("\nAre this good ok? (y/n): ");
 					isGood =  scanner.next().equalsIgnoreCase("y");
 					if (!isGood) main2(foodId);
 	}

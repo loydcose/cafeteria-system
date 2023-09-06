@@ -17,10 +17,7 @@ public class DeleteFood {
 		int price;
 		boolean isGood;
 		
-		
-		System.out.println("Edit food\n");
-		
-		System.out.print("Choose food id: ");
+		System.out.print("Choose food id to delete: ");
 		foodId = scanner.nextInt();
 		
 		Utils.foodTable(Utils.toSingleItemArray(foodId, foodList));
@@ -28,7 +25,7 @@ public class DeleteFood {
 		// display table
 		
 		// about to delete, then table
-		System.out.print("Are you sure you want to remove this? (y/n)");
+		System.out.print("Are you sure you want to remove this? (y/n): ");
 		isGood =  scanner.next().equalsIgnoreCase("y");
 		
 		if (isGood) {
