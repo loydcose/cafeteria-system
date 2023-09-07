@@ -221,25 +221,32 @@ public class Utils {
 	}
 	
 	public static String decorateText(String str, String color) {
-		String chosenColor = color == null ? "yellow" : color;
-		String decoratedString = "\u001B[33mYellow " + str;
-		
-		switch(chosenColor) {
-		case "red": decoratedString = "\u001B[31mRed " + str;
-			break;
-		case "green": decoratedString = "\u001B[32mGreen " + str;
-			break;
-		case "blue": decoratedString = "\u001B[34mBlue " + str;
-			break;
-		case "purple": decoratedString = "\u001B[35mPurple " + str;
-			break;
-		case "cyan": decoratedString = "\u001B[36mCyanw " + str;
-			break;
-		default: decoratedString = "\u001B[33mYellow " + str;
-		}
-		
-		return decoratedString;
+//	    String chosenColor = color == null ? "yellow" : color;
+	    String decoratedString;
+
+	    switch(color) {
+	        case "red":
+	            decoratedString = "\u001B[31m" + str + "\u001B[0m";
+	            break;
+	        case "green":
+	            decoratedString = "\u001B[32m" + str + "\u001B[0m"; 
+	            break;
+	        case "blue":
+	            decoratedString = "\u001B[34m" + str + "\u001B[0m"; 
+	            break;
+	        case "purple":
+	            decoratedString = "\u001B[35m" + str + "\u001B[0m"; 
+	            break;
+	        case "cyan":
+	            decoratedString = "\u001B[36m" + str + "\u001B[0m"; 
+	            break;
+	        default:
+	            decoratedString = "\u001B[33m" + str + "\u001B[0m"; 
+	    }
+
+	    return decoratedString;
 	}
+
 	
 	public static String toDate(Date date) {
 		 SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd");

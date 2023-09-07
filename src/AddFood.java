@@ -15,7 +15,7 @@ public class AddFood {
 		String foodName;
 		int price;
 		
-		System.out.println("Add food\n");
+		System.out.println(Utils.decorateText("--- Add food ---", "yellow"));
 		
 		System.out.print("Food name: ");
 		foodName = scanner.next();
@@ -32,7 +32,7 @@ public class AddFood {
 		// display with utils
 		Utils.foodTable(foundFoods);
 		
-		System.out.print("Are this good ok? (Y/n): ");
+		System.out.print("Is this good ok? (Y/n): ");
 		String input = scanner.nextLine().trim();
 		
 		if (input.isEmpty() || !input.equalsIgnoreCase("n")) {

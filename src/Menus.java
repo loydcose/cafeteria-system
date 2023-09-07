@@ -18,9 +18,8 @@ public class Menus {
 		int orderId = orders.size() + 1;
 		int option;
 		
-		System.out.println("Food Menu\n");
+		System.out.println(Utils.decorateText("--- Menu ---", "yellow"));
 		Utils.foodTable(foods);
-//		Utils.niceTable("something", foods);
 			
 		System.out.println("[1] - Order Food");
 		System.out.println("[2] - Back");
@@ -39,7 +38,7 @@ public class Menus {
 		int foodOption;
 		int quantity;
 		
-		System.out.print("\nChoose your food (Id): ");
+		System.out.print("Choose your food (Id): ");
 		foodOption =  scanner.nextInt();
 		
 		System.out.print("Quantity: ");

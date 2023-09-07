@@ -10,16 +10,16 @@ public class Receipt {
 	
 	public static void main(String[] args, int orderId) {	
 		Utils.clearScreen();
-		System.out.println("Receipt Page\n");
+		System.out.println(Utils.decorateText("--- Receipt ---", "yellow"));
 		Order foundOrder = Utils.findOrderById(orderId);
 		
 		if (foundOrder != null) {
 			Utils.receiptTable(foundOrder.foods);
 			
-			System.out.printf("\nOVERALL TOTAL: %d", countOverallTotal(foundOrder.foods));
-			System.out.printf("\nOrder at: %s %s%n", Utils.toDate(foundOrder.createdAt), Utils.toTime(foundOrder.createdAt));
+			System.out.printf("Order at: %s %s", Utils.toDate(foundOrder.createdAt), Utils.toTime(foundOrder.createdAt));
+			System.out.printf("\nOverall Total: %d", countOverallTotal(foundOrder.foods));
 			
-			Utils.confirm("Thank you for your order!");
+			Utils.confirm("\nThank you for your order!");
 			Main.main(args);
 		} else {
 			Utils.confirm("No date to be shown");

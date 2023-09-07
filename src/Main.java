@@ -8,7 +8,7 @@ public class Main {
 		Utils.clearScreen();
 		Scanner scanner = new Scanner(System.in);
 		int option;
-		System.out.println("Hello, welcome to cafeteria\n");
+		System.out.println(Utils.decorateText("--- Cafeteria System ---", "yellow"));
 		
 		System.out.println("Select one of the options:");
 		System.out.println("[1] - Menu");

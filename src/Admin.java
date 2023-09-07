@@ -8,7 +8,7 @@ public class Admin {
 		Scanner scanner = new Scanner(System.in);
 		int option;
 		
-		System.out.println("\nAdmin dashboard\n");
+		System.out.println(Utils.decorateText("--- Admin dashboard ---", "yellow"));
 		System.out.println("Select one of the options below.");
 		System.out.println("[1] - See all foods");
 		System.out.println("[2] - Analytics");

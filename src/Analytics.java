@@ -18,13 +18,12 @@ public class Analytics {
 		
 		
 		
-		System.out.println("Analytics");
+		System.out.println(Utils.decorateText("--- Analytics ---", "yellow"));
 		
 		if (Order.orders.isEmpty()) {
-			System.out.println("\nNo data to be displayed");
+			System.out.println("No data to be displayed");
 		} else {
-			System.out.println("\nAverage sales: " + averageSales);
-			System.out.println("\nSales:");
+			System.out.println("Average sales: " + averageSales);
 			
 			Utils.analyticsTable(Order.orders);
 //			System.out.printf("%-3s %-6s %-6s %-10s %-4s %-4s %n", "ID", "Date", "Time", "Name", "Qty", "Prc");
@@ -35,12 +34,12 @@ public class Analytics {
 //				}
 //			}
 			
-			System.out.println("\nTotal sales: " + totalSales);
+			System.out.println("Total sales: " + totalSales);
 		}
 		
 		
 		System.out.println("\nChoose one of the options:");
-		System.out.println("[1] Back");
+		System.out.println("[1] - Back");
 		System.out.print("Choose: ");
 		option = scanner.nextInt();
 		

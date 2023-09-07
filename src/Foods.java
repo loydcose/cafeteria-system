@@ -14,10 +14,10 @@ public class Foods {
 		Scanner scanner = new Scanner(System.in);
 		int option;
 		
-		System.out.println("\nALL FOODS");
+		System.out.println(Utils.decorateText("--- All foods ---", "yellow"));
 		Utils.foodTable(foods);
 		
-		System.out.println("\nOptions:");
+		System.out.println("Options:");
 		System.out.println("[1] - Add new");
 		System.out.println("[2] - Edit food");
 		System.out.println("[3] - Delete food");

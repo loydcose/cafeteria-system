@@ -14,10 +14,16 @@ public class DeleteFood {
 		Scanner scanner = new Scanner(System.in);
 		int foodId;
 		
+		Utils.clearScreen();
+		System.out.println(Utils.decorateText("--- Delete food ---", "yellow"));
+		
+		Utils.foodTable(foodList);
+		
 		System.out.print("Choose food id to delete: ");
 		foodId = scanner.nextInt();
 		scanner.nextLine();
 		
+		System.out.println();
 		Utils.foodTable(Utils.toSingleItemArray(foodId, foodList));
 		
 		System.out.print("You sure you want to remove this? (y/N): ");

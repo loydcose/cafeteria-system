@@ -14,6 +14,9 @@ public class EditFood {
 	static boolean isGood = false;
 
 	public static void main(String[] args) {
+		Utils.clearScreen();
+		System.out.println(Utils.decorateText("--- Edit food ---", "yellow"));
+		Utils.foodTable(foodList);
 		
 		System.out.print("Choose food id to edit: ");
 		foodId = scanner.nextInt();
@@ -43,13 +46,14 @@ public class EditFood {
 		// update with array list set
 		foodList.set(foodIndex, new Menu(foodId, foodName, price));
 		List<Menu> foundFoods = Utils.toSingleItemArray(foodId, foodList);
-							
+		System.out.println();
+		
 		// display with utils
 		Utils.foodTable(foundFoods);
 					
 		// save 
 		// print the result
-		System.out.print("\nAre this good ok? (Y/n): ");
+		System.out.print("Is this good ok? (Y/n): ");
 		String input = scanner.nextLine().trim();
 		
 		if (!input.isEmpty() && input.equalsIgnoreCase("n")) {
