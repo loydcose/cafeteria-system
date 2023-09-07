@@ -12,7 +12,6 @@ public class Foods {
 	public static void main(String[] args) {
 		Utils.clearScreen();
 		Scanner scanner = new Scanner(System.in);
-		int option;
 		
 		System.out.println(Utils.decorateText("--- All foods ---", "yellow"));
 		Utils.foodTable(foods);
@@ -22,8 +21,9 @@ public class Foods {
 		System.out.println("[2] - Edit food");
 		System.out.println("[3] - Delete food");
 		System.out.println("[4] - Back");
+		
+		int option = Utils.getInputInt("Choose: ", 1, 4);	
 		System.out.print("Choose: ");
-		option =  scanner.nextInt();
 		
 		switch (option) {
 		case 1: 

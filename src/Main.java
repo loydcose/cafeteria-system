@@ -7,7 +7,6 @@ public class Main {
 	public static void main(String[] args) {
 		Utils.clearScreen();
 		Scanner scanner = new Scanner(System.in);
-		int option;
 		System.out.println(Utils.decorateText("--- Cafeteria System ---", "yellow"));
 		
 		System.out.println("Select one of the options:");
@@ -15,10 +14,7 @@ public class Main {
 		System.out.println("[2] - Admin");
 		System.out.println("[3] - Exit");
 		
-		
-		System.out.print("Choose: ");
-		option =  scanner.nextInt();
-		
+		int option = Utils.getInputInt("Choose: ", 1, 3);
 		
 		switch (option) {
 		case 1: 

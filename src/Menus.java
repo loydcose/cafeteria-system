@@ -16,15 +16,13 @@ public class Menus {
 	public static void main(String[] args) {
 		Utils.clearScreen();
 		int orderId = orders.size() + 1;
-		int option;
 		
 		System.out.println(Utils.decorateText("--- Menu ---", "yellow"));
 		Utils.foodTable(foods);
 			
 		System.out.println("[1] - Order Food");
 		System.out.println("[2] - Back");
-		System.out.print("Choose: ");
-		option = scanner.nextInt();		
+		int option = Utils.getInputInt("Choose: ", 1, 2);	
 		
 		switch(option) {
 		case 1: choose(args, orderId);
@@ -35,15 +33,8 @@ public class Menus {
 	
 	public static void choose(String[] args, int orderId) {
 		
-		int foodOption;
-		int quantity;
-		
-		System.out.print("Choose your food (Id): ");
-		foodOption =  scanner.nextInt();
-		
-		System.out.print("Quantity: ");
-		quantity =  scanner.nextInt();
-		scanner.nextLine();
+		int foodOption = Utils.getInputInt("Choose your food (Id): ", 1, foods.size());
+		int quantity = Utils.getInputInt("Quantity: ", 1, 999);
 		
 		System.out.print("Choose more? (y/N): ");
 		String input = scanner.nextLine().trim();

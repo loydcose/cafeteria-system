@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import lib.Food;
 import lib.Order;
@@ -10,6 +11,7 @@ public class Receipt {
 	
 	public static void main(String[] args, int orderId) {	
 		Utils.clearScreen();
+		Scanner scanner = new Scanner(System.in);
 		System.out.println(Utils.decorateText("--- Receipt ---", "yellow"));
 		Order foundOrder = Utils.findOrderById(orderId);
 		
@@ -20,6 +22,7 @@ public class Receipt {
 			System.out.printf("\nOverall Total: %d", countOverallTotal(foundOrder.foods));
 			
 			Utils.confirm("\nThank you for your order!");
+			scanner.nextLine();
 			Main.main(args);
 		} else {
 			Utils.confirm("No date to be shown");

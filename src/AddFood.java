@@ -17,12 +17,29 @@ public class AddFood {
 		
 		System.out.println(Utils.decorateText("--- Add food ---", "yellow"));
 		
-		System.out.print("Food name: ");
-		foodName = scanner.next();
+		while (true) {
+			System.out.print("Food name: ");
+			String foodNameInput = scanner.nextLine();
+			if (!foodNameInput.isEmpty()) {
+				foodName = foodNameInput;
+				break;
+			} else {
+				System.out.println(Utils.decorateText("String must not be empty.", "red"));
+			}
+		}
 		
-		System.out.print("Price: ");
-		price = scanner.nextInt();
+		while (true) {
+			System.out.print("Price: ");
+			if (scanner.hasNextInt()) {
+				price = scanner.nextInt();
+				break;
+			} else {
+				System.out.println(Utils.decorateText("Must be a number.", "red"));
+				scanner.nextLine();
+			}
+		}
 		scanner.nextLine();
+		
 		
 		// save
 		foodList.add(new Menu(foodList.size() + 1, foodName, price));

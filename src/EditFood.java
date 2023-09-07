@@ -18,9 +18,7 @@ public class EditFood {
 		System.out.println(Utils.decorateText("--- Edit food ---", "yellow"));
 		Utils.foodTable(foodList);
 		
-		System.out.print("Choose food id to edit: ");
-		foodId = scanner.nextInt();
-		scanner.nextLine();
+		foodId = Utils.getInputInt("Choose food id to edit: ", 1, foodList.size());	
 		
 		main2(foodId);
 		Utils.confirm("Food Updated!");

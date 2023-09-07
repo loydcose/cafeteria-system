@@ -19,9 +19,7 @@ public class DeleteFood {
 		
 		Utils.foodTable(foodList);
 		
-		System.out.print("Choose food id to delete: ");
-		foodId = scanner.nextInt();
-		scanner.nextLine();
+		foodId = Utils.getInputInt("Choose food id to delete: ", 1, foodList.size());	
 		
 		System.out.println();
 		Utils.foodTable(Utils.toSingleItemArray(foodId, foodList));

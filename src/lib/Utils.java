@@ -262,7 +262,68 @@ public class Utils {
 		 return formattedTime;
 	}
 	
-	
+	public static int getInputInt(String message, int minOption, int maxOption) {
+		int option;
+		
+		while(true) {
+			System.out.print(message);
+            if (scanner.hasNextInt()) {
+                option = scanner.nextInt();
+                if (option >= minOption && option <= maxOption) {
+                	break; // Valid input, exit the loop
+                } else {
+                	System.out.println(decorateText("Invalid option.", "red"));
+                }
+            } else {
+                System.out.println(decorateText("Invalid option.", "red"));
+                scanner.next(); // Consume the invalid input
+            }
+		}
+		
+		return option;
+	}
 	
 
+//	public static String getInputString(String message) {
+//		String option;
+//		
+//		while(true) {
+//			System.out.print(message);
+//            if (scanner.hasNextLine()) {
+//                option = scanner.nextLine();
+//                if (option.isBlank()) {
+//                	System.out.println(decorateText("Invalid option.", "red"));
+//                } else {
+//                	break; // Valid input, exit the loop
+//                }
+//            } else {
+//                System.out.println(decorateText("Invalid option.", "red"));
+//                scanner.next(); // Consume the invalid input
+//            }
+//		}
+//		
+//		return option;
+//	}
+	
+//	public static String getDefaultInput(String message, String otherOpt) {
+//		
+//		scanner.nextLine();
+//		
+//		while(true) {
+//			System.out.print(message);
+//            if (scanner.hasNextLine()) {
+//            	String option = scanner.nextLine().trim();
+//                if (option.isEmpty()) {
+//                	return option;
+//                } else {
+//                	if (otherOpt == "") return option;
+//                	if (option.equalsIgnoreCase(otherOpt)) return option;
+//                	
+//                	System.out.println(decorateText("Invalid option.", "red"));
+//                }
+//            } else {
+//                scanner.nextLine();
+//            }
+//		}
+//	}
 }
